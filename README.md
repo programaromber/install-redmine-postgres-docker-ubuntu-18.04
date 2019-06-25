@@ -41,16 +41,16 @@
 <h3>create  configuration.yml file on the server in the  /usr/src/redmine/config/ folder with the following content:<h3>
 
 
-<code>default:<br>
-  email_delivery:<br>
-    delivery_method: :smtp<br>
-    smtp_settings:<br>
-      enable_starttls_auto: true<br>
-      address: "smtp.gmail.com" <br>
-      port: 587<br>
-      domain: "smtp.gmail.com" <br>
-      authentication: :login<br>
-      user_name: "redmine.desenvolve@gmail.com " <br>
+<code>default:<br/>
+  email_delivery:<br/>
+    delivery_method: :smtp<br/>
+    smtp_settings:<br/>
+      enable_starttls_auto: true<br/>
+      address: "smtp.gmail.com" <br/>
+      port: 587<br/>
+      domain: "smtp.gmail.com" <br/>
+      authentication: :login<br/>
+      user_name: "redmine.desenvolve@gmail.com " <br/>
       password: "R&dM1ne@2019"</code>
 
 <h1>Creating redmine container docker expands it to by 80</h1>   
@@ -66,7 +66,7 @@
 <h1>Command to check ip from docker redmine<h1>
 
 
-<code>docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' some-redmine</code>
+<code>"docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' some-redmine"</code>
 
 <h1>Hosts configuration</h1>
 <h3>include in the file  hosts in the /etc the ip of the docker container with your domain:</h3>
