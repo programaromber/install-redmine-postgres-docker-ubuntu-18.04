@@ -17,7 +17,7 @@
 
 <code>sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"</code>
 
-<code>sudo apt update<code>
+<code>sudo apt update</code>
 
 <code>sudo apt install docker-ce</code>
 
