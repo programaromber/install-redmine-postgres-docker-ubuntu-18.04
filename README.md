@@ -38,7 +38,7 @@ docker run -d -v /var/data/postgres/datadir:/var/lib/postgresql/data --name some
 
 <h3>Configuração para envio de e-mail com gmail</h3>
 
-<h4>create  **configuration.yml ** file on the server in the  **/usr/src/redmine/config/** folder with the following content:<h4>
+<h4>create  <i>configuration.yml</i> file on the server in the  <i>/usr/src/redmine/config/</i> folder with the following content:<h4>
 
 <code>
 <p>default:</p>
@@ -54,19 +54,8 @@ docker run -d -v /var/data/postgres/datadir:/var/lib/postgresql/data --name some
 <p>      	password: "senha"</p>  
 <code>
 
-default:
-  email_delivery:
-    delivery_method: :smtp
-    smtp_settings:
-      enable_starttls_auto: true
-      address: "smtp.gmail.com" 
-      port: 587
-      domain: "smtp.gmail.com" 
-      authentication: :login
-      user_name: "email@gmail.com " 
-      password: "senha" 
 
-<h1>Creating redmine container docker expands it to by 80</h1>   
+<h3>Creating redmine container docker expands it to by 80</h3>   
 
 docker run -d -p 80:3000 -v /usr/src/redmine/config/configuration.yml:/usr/src/redmine/config/configuration.yml --name some-redmine --link some-redmine --network some-network -e REDMINE_DB_POSTGRES=some-postgres -e REDMINE_DB_USERNAME=redmine -e REDMINE_DB_PASSWORD=secret redmine
 
@@ -74,27 +63,26 @@ sudo systemctl enable docker
 
 sudo systemctl start docker
 
-<h1>Command to check ip from docker redmine<h1>
+<h3>Command to check ip from docker redmine<h3>
 
 docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' some-redmine
 
-<h1>Hosts configuration</h1>
+<h3>Hosts configuration</h3>
 include in the file  <i>hosts</i> in the <i>/etc</i> the ip of the docker container with your domain:
 
 172.18.0.3	www.meusite.com.br
 
-<h1>apache2 configuration</h1>
+<h3>apache2 configuration</h3>
 
 <h3>Replace localhost with the application url in the 000-default.conf file
 on the server in the <i>/etc/apache2/sites-avaliable<i>.</h3>
-==================================================================== 
+
 <i>redirect permanent:</i>
 
 <VirtualHost *:80>
       Redirect permanent / http://localhost:3000/
 </VirtualHost>
 
-==================================================================== 
 <i>docker container ip configuration:</i>
 
 <VirtualHost *:80>
@@ -109,7 +97,7 @@ on the server in the <i>/etc/apache2/sites-avaliable<i>.</h3>
 </VirtualHost>
 
 
-<h1>restart on your apache server after the configuration changes</h1>
+<h3>restart on your apache server after the configuration changes</h3>
 
 sudo systemctl restart apache2.service
 
@@ -121,7 +109,7 @@ or
 
 restart on the ubunto machine, but if it does it will be necessary to start in the containers manually as below.
 
-<h1>If the server falls and does not raise the containers run following script for start and stop on putty </h1>
+<h3>If the server falls and does not raise the containers run following script for start and stop on putty </h3>
 
 docker container start some-postgres
 docker container start some-redmine
