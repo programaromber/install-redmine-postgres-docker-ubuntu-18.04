@@ -31,7 +31,7 @@
 
   
 <h1>Creating postgres docker container</h1>
-<h3>(the database is stored on the server and not on the docker with  /var/data/postgres/datadir)</h3>
+<h3>(the database is stored on the server and not on the docker with  <code>/var/data/postgres/datadir</code>)</h3>
 
 
 <code>docker run -d -v /var/data/postgres/datadir:/var/lib/postgresql/data --name some-postgres --network some-network -e POSTGRES_PASSWORD=secret -e POSTGRES_USER=redmine postgres</code>
