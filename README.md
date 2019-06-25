@@ -82,14 +82,15 @@ docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' som
 
 redirect permanent:
 
-<VirtualHost *:80>
+<code>
+"<VirtualHost *:80>
       Redirect permanent / http://localhost:3000/
-</VirtualHost>
-
+</VirtualHost>"
+</code>
 
 docker container ip configuration:
-
-<VirtualHost *:80>
+<code>
+"<VirtualHost *:80>
 	
   ServerName 34.66.109.176
   <Location "/manager">
@@ -98,8 +99,8 @@ docker container ip configuration:
       Order allow,deny
       Allow from all
   </Location>
-</VirtualHost>
-
+</VirtualHost>"
+</code>
 
 <h1>restart on your apache server after the configuration changes</h1>
 
