@@ -66,7 +66,7 @@
 <h1>Command to check ip from docker redmine<h1>
 
 
-<code>"docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' some-redmine"</code>
+<code>docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' some-redmine</code>
 
 <h1>Hosts configuration</h1>
 <h3>include in the file  hosts in the /etc the ip of the docker container with your domain:</h3>
@@ -79,26 +79,25 @@
 <h3>Replace localhost with the application url in the 000-default.conf file on the server in the /etc/apache2/sites-avaliable.<h3>
 
 
-redirect permanent:
+redirect permanent tag VirtualHost:
 
 <code>
-	"<VirtualHost *:80>"
-	      "Redirect permanent / http://localhost:3000/"
-	"</VirtualHost>"
+	< VirtualHost *:80 >
+	      Redirect permanent / http://localhost:3000/
+	</ VirtualHost >"
 </code>
 
 docker container ip configuration:
 <code>
-"<VirtualHost *:80>
-	
+< VirtualHost *:80>	
   ServerName 34.66.109.176
-  <Location "/manager">
+  < Location "/manager">
       ProxyPass "http://172.18.0.3:3000/"
       ProxyPassReverse "http://172.18.0.3:3000/"
       Order allow,deny
       Allow from all
-  </Location>
-</VirtualHost>"
+  </ Location>
+</ VirtualHost>"
 </code>
 
 <h1>restart on your apache server after the configuration changes</h1>
