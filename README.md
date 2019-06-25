@@ -31,7 +31,8 @@
 
   
 <h1>Creating postgres docker container</h1>
-<h3>(the database is stored on the server and not on the docker with  <code>/var/data/postgres/datadir</code>)</h3>
+<h3>(the database is stored on the server and not on the docker with)</h3>
+<code>/var/data/postgres/datadir</code>
 
 
 <code>docker run -d -v /var/data/postgres/datadir:/var/lib/postgresql/data --name some-postgres --network some-network -e POSTGRES_PASSWORD=secret -e POSTGRES_USER=redmine postgres</code>
@@ -41,7 +42,7 @@
 <h3>create  configuration.yml file on the server in the  /usr/src/redmine/config/ folder with the following content:<h3>
 
 
-<code>"default:
+<code>default:
   # Outgoing emails configuration (see examples above)
   email_delivery:
     delivery_method: :smtp
@@ -52,28 +53,28 @@
       domain: "smtp.gmail.com" 
       authentication: :login
       user_name: "redmine.desenvolve@gmail.com " 
-      password: "R&dM1ne@2019" "</code>
+      password: "R&dM1ne@2019"</code>
 
 <h1>Creating redmine container docker expands it to by 80</h1>   
 
 
-docker run -d -p 80:3000 -v /usr/src/redmine/config/configuration.yml:/usr/src/redmine/config/configuration.yml --name some-redmine --link some-redmine --network some-network -e REDMINE_DB_POSTGRES=some-postgres -e REDMINE_DB_USERNAME=redmine -e REDMINE_DB_PASSWORD=secret redmine
+<code>docker run -d -p 80:3000 -v /usr/src/redmine/config/configuration.yml:/usr/src/redmine/config/configuration.yml --name some-redmine --link some-redmine --network some-network -e REDMINE_DB_POSTGRES=some-postgres -e REDMINE_DB_USERNAME=redmine -e REDMINE_DB_PASSWORD=secret redmine</code>
 
-sudo systemctl enable docker
+<code>sudo systemctl enable docker</code>
 
-sudo systemctl start docker
+<code>sudo systemctl start docker</code>
 
 
 <h1>Command to check ip from docker redmine<h1>
 
 
-docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' some-redmine
+<code>docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' some-redmine</code>
 
 <h1>Hosts configuration</h1>
 <h3>include in the file  hosts in the /etc the ip of the docker container with your domain:</h3>
 
 
-172.18.0.3	www.meusite.com.br
+<code>172.18.0.3	www.meusite.com.br</code>
 
 
 <h1>apache2 configuration</h1>
@@ -83,9 +84,9 @@ docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' som
 redirect permanent:
 
 <code>
-"<VirtualHost *:80>
-      Redirect permanent / http://localhost:3000/
-</VirtualHost>"
+	"<VirtualHost *:80>"
+	      "Redirect permanent / http://localhost:3000/"
+	"</VirtualHost>"
 </code>
 
 docker container ip configuration:
