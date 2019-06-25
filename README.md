@@ -2,15 +2,10 @@
  installation script for redmine and postgres with docker on ubuntu 18.04
 
 
-=================================================
+<h1>create host Ubuntu 18.04</h1>
 
-create host Ubuntu 18.04
+<h3>Execute commands in the following order:</h3>
 
-=================================================
-
-Execute commands in the following order:
-
-====================================================================  
 
 sudo apt update
 
@@ -34,20 +29,18 @@ docker pull redmine
 
 docker network create some-network
 
-====================================================================    
-Creating postgres docker container 
-(the database is stored on the server and not on the docker with  **/var/data/postgres/datadir **)
-====================================================================   
+  
+<h3>Creating postgres docker container</h3>
+<h3>(the database is stored on the server and not on the docker with  **/var/data/postgres/datadir **)</h3>
 
 docker run -d -v /var/data/postgres/datadir:/var/lib/postgresql/data --name some-postgres --network some-network -e POSTGRES_PASSWORD=secret -e POSTGRES_USER=redmine postgres
 
 
-====================================================================     
-Configuração para envio de e-mail com gmail
-====================================================================
+<h3>Configuração para envio de e-mail com gmail</h3>
 
-create  **configuration.yml ** file on the server in the  **/usr/src/redmine/config/** folder with the following content:
+<h4>create  **configuration.yml ** file on the server in the  **/usr/src/redmine/config/** folder with the following content:<h4>
 
+<code>
 default:
   email_delivery:
     delivery_method: :smtp
@@ -59,7 +52,7 @@ default:
       authentication: :login
       user_name: "email@gmail.com " 
       password: "senha"  
-
+ </code>
 ====================================================================    
 Creating redmine container docker expands it to by 80
 ====================================================================     
