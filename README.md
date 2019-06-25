@@ -38,9 +38,9 @@ docker run -d -v /var/data/postgres/datadir:/var/lib/postgresql/data --name some
 
 <h1>Configuração para envio de e-mail com gmail</h1>
 
-create  configuration.yml file on the server in the  /usr/src/redmine/config/ folder with the following content:
+<h3>create  configuration.yml file on the server in the  /usr/src/redmine/config/ folder with the following content:<h3>
 
-<code>
+
 <p>default:</p>
 <p>	email_delivery:</p>
 <p>		delivery_method: :smtp</p>
@@ -52,7 +52,6 @@ create  configuration.yml file on the server in the  /usr/src/redmine/config/ fo
 <p>      	authentication: :login</p>
 <p>      	user_name: "email@gmail.com"</p> 
 <p>      	password: "senha"</p>  
-<code>
 
 
 <h1>Creating redmine container docker expands it to by 80</h1>   
@@ -63,7 +62,8 @@ sudo systemctl enable docker
 
 sudo systemctl start docker
 
-<h3>Command to check ip from docker redmine<h3>
+
+<h1>Command to check ip from docker redmine<h1>
 
 docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' some-redmine
 
@@ -73,9 +73,8 @@ include in the file  <i>hosts</i> in the <i>/etc</i> the ip of the docker contai
 172.18.0.3	www.meusite.com.br
 
 <h1>apache2 configuration</h1>
-
-Replace localhost with the application url in the 000-default.conf file
-on the server in the /etc/apache2/sites-avaliable.
+<h3>Replace localhost with the application url in the 000-default.conf file
+on the server in the /etc/apache2/sites-avaliable.<h3>
 
 redirect permanent:
 
