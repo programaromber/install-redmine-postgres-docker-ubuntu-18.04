@@ -7,34 +7,34 @@
 <h3>Execute commands in the following order:</h3>
 
 
+<code>sudo apt update</code>
+
+<code>sudo apt upgrade</code>
+
+<code>sudo apt-get install  curl apt-transport-https ca-certificates software-properties-common</code>
+
+<code>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</code>
+
+<code>sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"</code>
+
 <code>sudo apt update<code>
 
-<code>sudo apt upgrade<code>
+<code>sudo apt install docker-ce</code>
 
-<code>sudo apt-get install  curl apt-transport-https ca-certificates software-properties-common<code>
+<code>sudo systemctl status docker</code>
 
-<code>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -<code>
+<code>docker pull postgres</code>
 
-<code>sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"<code>
+<code>docker pull redmine</code>
 
-<code>sudo apt update<code>
-
-<code>sudo apt install docker-ce<code>
-
-<code>sudo systemctl status docker<code>
-
-<code>docker pull postgres<code>
-
-<code>docker pull redmine<code>
-
-<code>docker network create some-network<code>
+<code>docker network create some-network</code>
 
   
 <h1>Creating postgres docker container</h1>
 <h3>(the database is stored on the server and not on the docker with  /var/data/postgres/datadir)</h3>
 
 
-<code>docker run -d -v /var/data/postgres/datadir:/var/lib/postgresql/data --name some-postgres --network some-network -e POSTGRES_PASSWORD=secret -e POSTGRES_USER=redmine postgres<code>
+<code>docker run -d -v /var/data/postgres/datadir:/var/lib/postgresql/data --name some-postgres --network some-network -e POSTGRES_PASSWORD=secret -e POSTGRES_USER=redmine postgres</code>
 
 
 <h1>Configuração para envio de e-mail com gmail</h1>
@@ -52,7 +52,7 @@
       domain: "smtp.gmail.com" 
       authentication: :login
       user_name: "redmine.desenvolve@gmail.com " 
-      password: "R&dM1ne@2019" "<code>
+      password: "R&dM1ne@2019" "</code>
 
 <h1>Creating redmine container docker expands it to by 80</h1>   
 
