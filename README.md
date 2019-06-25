@@ -41,17 +41,17 @@ docker run -d -v /var/data/postgres/datadir:/var/lib/postgresql/data --name some
 <h3>create  configuration.yml file on the server in the  /usr/src/redmine/config/ folder with the following content:<h3>
 
 
-<p>default:</p>
-<p>	email_delivery:</p>
-<p>		delivery_method: :smtp</p>
-<p>		smtp_settings:</p>
-<p>      	enable_starttls_auto: true</p>
-<p>      	address: "smtp.gmail.com"</p> 
-<p>     	port: 587</p>
-<p>     	domain: "smtp.gmail.com"</p> 
-<p>      	authentication: :login</p>
-<p>      	user_name: "email@gmail.com"</p> 
-<p>      	password: "senha"</p>  
+default:
+	email_delivery:
+	delivery_method: :smtp
+	smtp_settings:
+      	enable_starttls_auto: true
+      	address: "smtp.gmail.com" 
+     	port: 587
+    	domain: "smtp.gmail.com"
+     	authentication: :login
+      	user_name: "email@gmail.com" 
+      	password: "senha"
 
 
 <h1>Creating redmine container docker expands it to by 80</h1>   
