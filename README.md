@@ -31,7 +31,7 @@
 
   
 <h1>Creating postgres docker container</h1>
-<b>(the database is stored on the server and not on the docker with):</b> <code>/var/data/postgres/datadir</code>
+<b>(the database is stored on the server and not on the docker with): /var/data/postgres/datadir</b>
 
 
 <code>docker run -d -v /var/data/postgres/datadir:/var/lib/postgresql/data --name some-postgres --network some-network -e POSTGRES_PASSWORD=secret -e POSTGRES_USER=redmine postgres</code>
@@ -41,16 +41,16 @@
 <h3>create  configuration.yml file on the server in the  /usr/src/redmine/config/ folder with the following content:<h3>
 
 
-<code>default:
-  email_delivery:
-    delivery_method: :smtp
-    smtp_settings:
-      enable_starttls_auto: true
-      address: "smtp.gmail.com" 
-      port: 587
-      domain: "smtp.gmail.com" 
-      authentication: :login
-      user_name: "redmine.desenvolve@gmail.com " 
+<code>default:<br>
+  email_delivery:<br>
+    delivery_method: :smtp<br>
+    smtp_settings:<br>
+      enable_starttls_auto: true<br>
+      address: "smtp.gmail.com" <br>
+      port: 587<br>
+      domain: "smtp.gmail.com" <br>
+      authentication: :login<br>
+      user_name: "redmine.desenvolve@gmail.com " <br>
       password: "R&dM1ne@2019"</code>
 
 <h1>Creating redmine container docker expands it to by 80</h1>   
