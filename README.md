@@ -7,7 +7,7 @@
 <h3>Execute commands in the following order:</h3>
 
 
-sudo apt update
+<code>sudo apt update<code>
 
 sudo apt upgrade
 
