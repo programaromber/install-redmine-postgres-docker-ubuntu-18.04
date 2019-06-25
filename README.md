@@ -40,18 +40,7 @@
 <h1>Configuração para envio de e-mail com gmail</h1>
 <h3>create  configuration.yml file on the server in the  /usr/src/redmine/config/ folder with the following content:<h3>
 
-
-<code>default:</br>
-  email_delivery:</br>
-    delivery_method: :smtp</br>
-    smtp_settings:</br>
-      enable_starttls_auto: true</br>
-      address: "smtp.gmail.com"</br>
-      port: 587</br>
-      domain: "smtp.gmail.com"</br>
-      authentication: :login</br>
-      user_name: "redmine.desenvolve@gmail.com "</br>
-      password: "R&dM1ne@2019"</code>
+<img src="https://github.com/rafasall/install-redmine-postgres-docker-ubuntu-18.04/blob/master/configuration-yml.jpg"/>
 
 <h1>Creating redmine container docker expands it to by 80</h1>   
 
@@ -79,26 +68,8 @@
 <h3>Replace localhost with the application url in the 000-default.conf file on the server in the /etc/apache2/sites-avaliable.<h3>
 
 
-redirect permanent tag VirtualHost:
+<img src="https://github.com/rafasall/install-redmine-postgres-docker-ubuntu-18.04/blob/master/virtualhost-proxy-configure.jpg"/>
 
-<code>
-	< VirtualHost *:80 ></br>
-	      Redirect permanent / http://localhost:3000/</br>
-	</ VirtualHost >"
-</code>
-
-docker container ip configuration:
-<code>
-< VirtualHost *:80></br>	
-  ServerName 34.66.109.176</br>
-  < Location "/manager"></br>
-      ProxyPass "http://172.18.0.3:3000/"</br>
-      ProxyPassReverse "http://172.18.0.3:3000/"</br>
-      Order allow,deny</br>
-      Allow from all</br>
-  </ Location></br>
-</ VirtualHost>"
-</code>
 
 <h1>restart on your apache server after the configuration changes</h1>
 
