@@ -30,15 +30,15 @@ docker pull redmine
 docker network create some-network
 
   
-<h3>Creating postgres docker container</h3>
-<h3>(the database is stored on the server and not on the docker with  **/var/data/postgres/datadir **)</h3>
+<h1>Creating postgres docker container</h1>
+<h3>(the database is stored on the server and not on the docker with  /var/data/postgres/datadir)</h3>
 
 docker run -d -v /var/data/postgres/datadir:/var/lib/postgresql/data --name some-postgres --network some-network -e POSTGRES_PASSWORD=secret -e POSTGRES_USER=redmine postgres
 
 
-<h3>Configuração para envio de e-mail com gmail</h3>
+<h1>Configuração para envio de e-mail com gmail</h1>
 
-<h4>create  <i>configuration.yml</i> file on the server in the  <i>/usr/src/redmine/config/</i> folder with the following content:<h4>
+create  configuration.yml file on the server in the  /usr/src/redmine/config/ folder with the following content:
 
 <code>
 <p>default:</p>
@@ -55,7 +55,7 @@ docker run -d -v /var/data/postgres/datadir:/var/lib/postgresql/data --name some
 <code>
 
 
-<h3>Creating redmine container docker expands it to by 80</h3>   
+<h1>Creating redmine container docker expands it to by 80</h1>   
 
 docker run -d -p 80:3000 -v /usr/src/redmine/config/configuration.yml:/usr/src/redmine/config/configuration.yml --name some-redmine --link some-redmine --network some-network -e REDMINE_DB_POSTGRES=some-postgres -e REDMINE_DB_USERNAME=redmine -e REDMINE_DB_PASSWORD=secret redmine
 
@@ -67,23 +67,23 @@ sudo systemctl start docker
 
 docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' some-redmine
 
-<h3>Hosts configuration</h3>
+<h31>Hosts configuration</h1>
 include in the file  <i>hosts</i> in the <i>/etc</i> the ip of the docker container with your domain:
 
 172.18.0.3	www.meusite.com.br
 
-<h3>apache2 configuration</h3>
+<h1>apache2 configuration</h1>
 
-<h3>Replace localhost with the application url in the 000-default.conf file
-on the server in the <i>/etc/apache2/sites-avaliable<i>.</h3>
+Replace localhost with the application url in the 000-default.conf file
+on the server in the /etc/apache2/sites-avaliable.
 
-<i>redirect permanent:</i>
+redirect permanent:
 
 <VirtualHost *:80>
       Redirect permanent / http://localhost:3000/
 </VirtualHost>
 
-<i>docker container ip configuration:</i>
+docker container ip configuration:
 
 <VirtualHost *:80>
 	
@@ -97,7 +97,7 @@ on the server in the <i>/etc/apache2/sites-avaliable<i>.</h3>
 </VirtualHost>
 
 
-<h3>restart on your apache server after the configuration changes</h3>
+<h1>restart on your apache server after the configuration changes</h1>
 
 sudo systemctl restart apache2.service
 
@@ -109,7 +109,7 @@ or
 
 restart on the ubunto machine, but if it does it will be necessary to start in the containers manually as below.
 
-<h3>If the server falls and does not raise the containers run following script for start and stop on putty </h3>
+<h1>If the server falls and does not raise the containers run following script for start and stop on putty </h1>
 
 docker container start some-postgres
 docker container start some-redmine
