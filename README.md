@@ -9,50 +9,50 @@
 
 <code>sudo apt update<code>
 
-sudo apt upgrade
+<code>sudo apt upgrade<code>
 
-sudo apt-get install  curl apt-transport-https ca-certificates software-properties-common
+<code>sudo apt-get install  curl apt-transport-https ca-certificates software-properties-common<code>
 
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+<code>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -<code>
 
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+<code>sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"<code>
 
-sudo apt update
+<code>sudo apt update<code>
 
-sudo apt install docker-ce
+<code>sudo apt install docker-ce<code>
 
-sudo systemctl status docker
+<code>sudo systemctl status docker<code>
 
-docker pull postgres
+<code>docker pull postgres<code>
 
-docker pull redmine
+<code>docker pull redmine<code>
 
-docker network create some-network
+<code>docker network create some-network<code>
 
   
 <h1>Creating postgres docker container</h1>
 <h3>(the database is stored on the server and not on the docker with  /var/data/postgres/datadir)</h3>
 
 
-docker run -d -v /var/data/postgres/datadir:/var/lib/postgresql/data --name some-postgres --network some-network -e POSTGRES_PASSWORD=secret -e POSTGRES_USER=redmine postgres
+<code>docker run -d -v /var/data/postgres/datadir:/var/lib/postgresql/data --name some-postgres --network some-network -e POSTGRES_PASSWORD=secret -e POSTGRES_USER=redmine postgres<code>
 
 
 <h1>Configuração para envio de e-mail com gmail</h1>
 <h3>create  configuration.yml file on the server in the  /usr/src/redmine/config/ folder with the following content:<h3>
 
 
-default:<br/>
-	email_delivery:<br/>
-	delivery_method: :smtp<br/>
-	smtp_settings:<br/>
-      	enable_starttls_auto: true<br/>
-      	address: "smtp.gmail.com"<br/> 
-     	port: 587<br/>
-    	domain: "smtp.gmail.com"<br/>
-     	authentication: :login<br/>
-      	user_name: "email@gmail.com" <br/>
-      	password: "senha"<br/>
-
+<code>"default:
+  # Outgoing emails configuration (see examples above)
+  email_delivery:
+    delivery_method: :smtp
+    smtp_settings:
+      enable_starttls_auto: true
+      address: "smtp.gmail.com" 
+      port: 587
+      domain: "smtp.gmail.com" 
+      authentication: :login
+      user_name: "redmine.desenvolve@gmail.com " 
+      password: "R&dM1ne@2019" "<code>
 
 <h1>Creating redmine container docker expands it to by 80</h1>   
 
