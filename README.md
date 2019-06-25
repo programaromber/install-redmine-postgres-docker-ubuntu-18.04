@@ -31,8 +31,7 @@
 
   
 <h1>Creating postgres docker container</h1>
-<h3>(the database is stored on the server and not on the docker with)</h3>
-<code>/var/data/postgres/datadir</code>
+<b>(the database is stored on the server and not on the docker with):</b> <code>/var/data/postgres/datadir</code>
 
 
 <code>docker run -d -v /var/data/postgres/datadir:/var/lib/postgresql/data --name some-postgres --network some-network -e POSTGRES_PASSWORD=secret -e POSTGRES_USER=redmine postgres</code>
@@ -43,7 +42,6 @@
 
 
 <code>default:
-  # Outgoing emails configuration (see examples above)
   email_delivery:
     delivery_method: :smtp
     smtp_settings:
@@ -106,11 +104,11 @@ docker container ip configuration:
 <h1>restart on your apache server after the configuration changes</h1>
 
 
-sudo systemctl restart apache2.service
+<code>sudo systemctl restart apache2.service</code>
 
 or
 
-service apache2 reload
+<code>service apache2 reload</code>
 
 or
 
@@ -120,11 +118,11 @@ restart on the ubunto machine, but if it does it will be necessary to start in t
 <h1>If the server falls and does not raise the containers run following script for start and stop on putty </h1>
 
 
-docker container start some-postgres
-docker container start some-redmine
+<code>docker container start some-postgres</code></code>
+docker container start some-redmine</code>
 
-docker container stop some-postgres
-docker container stop some-redmine
+<code>docker container stop some-postgres</code>
+<code>docker container stop some-redmine</code>
 
 
 <h1>References</h1>
